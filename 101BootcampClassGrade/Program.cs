@@ -11,14 +11,16 @@ namespace _101BootcampClassGrade
             // declare variables
             //bool IsMoreStudents = true;
             int _studentCounter = 0;
+            const int maxStudents = 8;
+            string _yesno = "start";
 
             ClassRoom _classroom = new ClassRoom();
 
-            while (_studentCounter < 5)
+            while ((_studentCounter < maxStudents))
             {
                 Console.WriteLine("Do you want to add a new student (YES) " +
                     "and are you done adding students (DONE)");
-                string _yesno = Console.ReadLine().ToUpper();
+                _yesno = Console.ReadLine().ToUpper();
 
                 if (_yesno == "YES")
                 {
@@ -28,10 +30,9 @@ namespace _101BootcampClassGrade
                     _classroom.ListOfStudents.Add(_student);
                     _studentCounter++;
                 }
-                //else // NO, DONE, etc....
-                //{
-                //    IsMoreStudents = false;
-                //}
+
+                if (_yesno.ToUpper() == "DONE") break;
+              
 
             }
 
