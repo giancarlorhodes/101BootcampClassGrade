@@ -11,9 +11,8 @@ namespace _101BootcampClassGrade
             // declare variables
             //bool IsMoreStudents = true;
             int _studentCounter = 0;
-            const int maxStudents = 8;
-            string _yesno = "start";
-
+            const int maxStudents = 8; // TODO - use of a constant
+            string _yesno = "";
             ClassRoom _classroom = new ClassRoom();
 
             while ((_studentCounter < maxStudents))
@@ -27,29 +26,30 @@ namespace _101BootcampClassGrade
                     Console.WriteLine("Name of student");
                     string _name = Console.ReadLine();
                     Student _student = new Student(_name);
+                  
+
                     _classroom.ListOfStudents.Add(_student);
                     _studentCounter++;
                 }
 
                 if (_yesno.ToUpper() == "DONE") break;
               
-
             }
 
             bool IsContinue = true;
             while (IsContinue)
             {
                 Console.WriteLine("MAIN MENU (L) List Student Names (P) Print Grades (A) Add grade for particular student (D) Done");
-                string _menu = Console.ReadLine();
+                string _menu = Console.ReadLine().ToUpper();
 
                 switch (_menu.ToUpper())
                 {
 
                     case "P":
-                        PrintClassGrades(_classroom);
+                        Program.PrintClassGrades(_classroom);
                         break;
                     case "L":
-                        PrintStudents(_classroom);
+                        Program.PrintStudents(_classroom);
                         break;
                     case "A":
                         Console.WriteLine("Please enter student name you want to enter a grade for");
@@ -98,6 +98,7 @@ namespace _101BootcampClassGrade
 
         private static void PrintClassGrades(ClassRoom inClassroom)
         {
+
             // example print
             // Name                 Grade                     Average
             // --------------------------------------------------------------------------------------
@@ -116,25 +117,28 @@ namespace _101BootcampClassGrade
 
 
             // print the header
-            Console.WriteLine("Student Name".PadRight(20) + "Grade".PadRight(20) + "Average".PadRight(20));
-            Console.WriteLine("------".PadRight(60, '-'));
+            Console.WriteLine("Student Name".PadRight(20) + "Grade".PadRight(20) + "Average".PadRight(20) + "Letter Grade".PadRight(20));
+            Console.WriteLine("------".PadRight(80, '-'));
 
             // print each student name once on it's own line
             foreach (var _student in inClassroom.ListOfStudents)
             {
-                Console.WriteLine(_student.Name.PadRight(60));
+                Console.WriteLine(_student.Name.PadRight(80));
 
                 // write each grade on it's own line, pad 20 before printing then pad 40
                 foreach (var _grade in _student.Grades)
                 {
-                    Console.WriteLine("".PadRight(20) + _grade.ToString().PadRight(40));
+                    Console.WriteLine("".PadRight(20) + _grade.ToString().PadRight(60));
                 }
 
                 // average line
-                Console.WriteLine("".PadRight(40) + _student.StudentAverage.ToString().PadRight(20));
+                Console.WriteLine("".PadRight(40) + _student.StudentAverage.ToString().PadRight(40));
+
+                // letter
+                Console.WriteLine("".PadRight(60) + _student.LetterGrade.ToString().PadRight(20));
 
                 // footer line
-                Console.WriteLine("-------".PadRight(60, '-'));
+                Console.WriteLine("-------".PadRight(80, '-'));
 
                 // continue to the next student
             }

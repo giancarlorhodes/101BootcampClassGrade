@@ -17,7 +17,7 @@ namespace _101BootcampClassGradeLibrary
         public bool IsStudentInClass(string inNameToSearchOn)
         {
 
-            if (this.ListOfStudents.Where(x => x.Name == inNameToSearchOn).Count() != 0)
+            if (this.ListOfStudents.Where(x => x.Name.ToUpper() == inNameToSearchOn.ToUpper()).Count() != 0)
             {
                 return true;
             }
