@@ -15,6 +15,7 @@ namespace _101BootcampClassGrade
             string _yesno = "";
             ClassRoom _classroom = new ClassRoom();
 
+            // store up to some max
             while ((_studentCounter < maxStudents))
             {
                 Console.WriteLine("Do you want to add a new student (YES) " +
@@ -27,7 +28,6 @@ namespace _101BootcampClassGrade
                     string _name = Console.ReadLine();
                     Student _student = new Student(_name);
                   
-
                     _classroom.ListOfStudents.Add(_student);
                     _studentCounter++;
                 }
