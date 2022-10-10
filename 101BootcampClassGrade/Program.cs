@@ -9,13 +9,13 @@ namespace _101BootcampClassGrade
         static void Main(string[] args)
         {
             // declare variables
-            //bool IsMoreStudents = true;
             int _studentCounter = 0;
-            const int maxStudents = 8; // TODO - use of a constant
+            const int maxStudents = 8; // constant  for max students
             string _yesno = "";
-            ClassRoom _classroom = new ClassRoom();
+            ClassRoom _classroom = new ClassRoom(); // this in main container object
 
-            // store up to some max
+
+            // 1. add the students up front in  a loop before movinig on
             while ((_studentCounter < maxStudents))
             {
                 Console.WriteLine("Do you want to add a new student (YES) " +
@@ -36,6 +36,8 @@ namespace _101BootcampClassGrade
               
             }
 
+
+            // 2. game loop - main menu loop
             bool IsContinue = true;
             while (IsContinue)
             {
@@ -68,7 +70,6 @@ namespace _101BootcampClassGrade
                         {
                             Console.WriteLine("Student with that name does not exist.");
                         }
-
                         break;
                     default:
                         IsContinue = false;
@@ -117,7 +118,8 @@ namespace _101BootcampClassGrade
 
 
             // print the header
-            Console.WriteLine("Student Name".PadRight(20) + "Grade".PadRight(20) + "Average".PadRight(20) + "Letter Grade".PadRight(20));
+            Console.WriteLine("Student Name".PadRight(20) + "Grade".PadRight(20) + "Average".PadRight(20) 
+                + "Letter Grade".PadRight(20));
             Console.WriteLine("------".PadRight(80, '-'));
 
             // print each student name once on it's own line
